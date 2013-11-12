@@ -1,0 +1,15 @@
+{
+  "name": "Timegrip",
+  "version": "0.1.0",
+  "description": "Timegrip helper",
+  "icons": { "128": "icon.png" },
+  "content_scripts": [
+    {
+      "matches": ["http://dktimegrip/*","https://timegrip.creuna.dk/*"],
+      "js": ["mappy_content_script.js"],
+      "css": ["styles.css"]
+       }
+  ],
+  "manifest_version": 2,
+  "web_accessible_resources": ["script.js"]
+}

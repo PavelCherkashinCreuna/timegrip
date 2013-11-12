@@ -1,0 +1,171 @@
+.visuallyhidden {
+	position: absolute;
+	left: -9999px;
+}
+
+
+.timegrip-holder {
+	margin-bottom: 20px;
+}
+
+#actionButtons {
+	border: none;
+}
+
+#actionButtons .button {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.smallinput {
+	min-width: 100px;
+}
+
+.timegrip-table {
+	border: none;
+	table-layout: fixed;
+}
+.timegrip-table select {
+	width: 150px;
+}
+.timegrip-table table,
+.timegrip-table input {
+	margin-bottom: 0;
+}
+
+.timegrip-table table {
+	border: none;
+	background: none;
+}
+
+.timegrip-table .datectrl {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.timegrip-label {
+	font-size: 13px;
+	display: block;
+}
+
+.timegrip-input[type="text"] {
+	font-size: 12px;
+	line-height: 18px;
+	width: 100%;
+	padding: 5px;
+}
+.timegrip-table input[type="text"]:focus {
+	border: 2px solid red;
+	outline: none;
+}
+.timegrip-activity-res,
+.timegrip-project-search-res,
+.timegrip-input-holder {
+	width: 200px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+.timegrip-input-holder {
+	width: 191px;
+}
+
+.timegrip-activity-res,
+.timegrip-project-search-res {
+	max-height: 300px;
+	margin: 0 20px;
+	overflow: auto;
+}
+
+.timegrip-help-text {
+	display: none;
+	position: absolute;
+	bottom: -30px;
+	color: grey;
+}
+
+.side-nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.side-nav li {
+	padding: 3px 0;
+}
+.side-nav .active a {
+	color: red;
+}
+.timegrip-like-button {
+	display: inline-block;
+	padding: 0 5px;
+	margin: 0 5px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+.timegrip-proj-res-item,
+.timegrip-activity-res-item {
+	display: inline-block;
+	padding: 0 0 0 10px;
+	position: relative;
+}
+.timegrip-proj-res-item:focus,
+.timegrip-activity-res-item:focus {
+	outline: none;
+}
+.timegrip-proj-res-item .arrow,
+.timegrip-activity-res-item .arrow{
+	display: none;
+	position: absolute;
+	top: 5px;
+	left: 0px;
+	width: 5px;
+	height: 5px;
+	background: #000;
+}
+
+.timegrip-proj-res-item:focus .arrow,
+.timegrip-activity-res-item:focus .arrow {
+	display: block;
+}
+.timegrip-favorite-container {
+	right: 0;
+	top: 73px;
+	bottom: 0;
+	background: #fff;
+	min-height: 200px;
+	width: 350px;
+	overflow: auto;
+	position: absolute;
+	padding: 15px !important;
+	border: 1px solid #000;
+	border-width: 0 0 0 1px;
+}
+.timegrip-your-proj-list,
+.timegrip-fav-list {
+	margin: 0;
+	padding: 10px 0;
+	list-style: none;
+}
+.timegrip-favorite-holder {
+	height: 250px;
+	overflow: auto;
+}
+.timegrip-fav-list li {
+	margin: 10px 0;
+}
+.timegrip-your-proj-list li {
+	margin: 5px 0;
+	padding: 0 0 0 10px;
+}
+.timegrip-your-proj-list .timegrip-your-proj-group {
+	font-weight: bold;
+	padding: 0;
+}
+.timegrip-fav-remove {
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+body > div {
+	padding-right: 380px !important;
+}
