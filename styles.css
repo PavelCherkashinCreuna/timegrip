@@ -1,426 +1,437 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
-body {
-	color: #343434;
-	background: url(http://www.creuna.dk/static/img/noice.png) #e6e6e6;
-}
-
-
-h1, h2, h3, h4, h5 {
-	color: #343434;
-	font-family: "Source Sans Pro";
-}
-
-h1 {
-   font-weight: 700;
-   font-size: 2em;
-   line-height: 1.2;
-   text-align: center;
-   text-transform: uppercase;
-   font-style: normal;
-
-   padding: 10px 0;
-}
-
-a {
-	color: #03aaf6;
-}
-
-a:hover,
-a:active {
-	color: #1b7097;;
-}
-
-.mmenucontainer a {
-	color: #fff;
-}
-
-.mmenucontainer a:hover {
-	color: #03aaf6;
-}
-
-input,
-.timegrip-like-button {
-	box-sizing: border-box;
-	border: 1px solid #c6c6c6;
-	border-radius: 6px;
-	resize: none;
-	padding: 8px;
-}
-
-input[type="button"],
-input.button {
-	padding-left: 10px !important;
-	padding-right: 10px !important;
-	border: 0 !important;
-	box-shadow: 0 1px 1px rgba(0,0,0,.2);
-}
-
-th {
-	background: #343434 !important;
-	padding: 5px;
-}
-
-
-#dspact_SubmitAll {
-	min-width: 200px;
-	float: right;
-	margin-left: 20px;
-}
-
-#dspact_Insert2,
-#dspact_OK2,
-#dspact_SubmitAll,
-.timegrip-like-button {
-	color: #fff;
-	font-weight: 600;
-	padding: 10px 40px;
-	font-size: 16px;
-	border: 0;
-	border-radius: 4px;
-	box-shadow: 0 1px 1px rgba(255,255,255,.8) inset,0 -1px 1px rgba(0,0,0,.2) inset;
-	text-shadow: 0 1px rgba(0,0,0,.6);
-}
-
-#dspact_OK2,
-#dspact_SubmitAll,
-.timegrip-like-button {
-	background: #159edd;
-}
-#dspact_OK2:hover,
-#dspact_SubmitAll:hover,
-.timegrip-like-button:hover,
-#dspact_OK2:active,
-#dspact_SubmitAll:active,
-.timegrip-like-button:active {
-	background: #1b7097;
-	color: #fff;
-	text-decoration: none;
-}
-
-#dspact_Insert2 {
-	background: rgb(117,206,039);
-}
-#dspact_Insert2:hover,
-#dspact_Insert2:active {
-	background: rgb(102,179,039);
-}
-
-#dspact_Cancel3 {
-	background: #fff;
-}
-#dspact_Cancel3:hover,
-#dspact_Cancel3:active {
-	background: #e6e6e6;
-	border: 0;
-}
-
-
-
-
-
-body > table:first-of-type > tbody > tr > td {
-	width: 100%;
-	height: 50px;
-	border-bottom: 1px solid #1f1f1f;
-	box-shadow: 0 -2px 10px rgba(0,0,0,.5);
-	background: #000 url(http://www.creuna.dk/static/img/logo_creuna_site.png) no-repeat 10px center !important;
-	padding-left: 150px !important;
-	vertical-align: middle !important;
-}
-
-body > table:first-of-type > tbody > tr > td + td {
-	display: none;
-}
-
-body > table:first-of-type > tbody > tr > td td {
-	padding-bottom: 0 !important;
-	vertical-align: middle !important;
-}
-
-
-
-
-
-
-.visuallyhidden {
-	position: absolute;
-	left: -9999px;
-}
-
-
-.timegrip-holder {
-	margin-bottom: 20px;
-	width: 100%;
-	padding: 2em 0;
-	border-bottom: 1px solid #c6c6c6;
-	box-shadow: 0px 2px 0 -1px #fff;
-}
-
-#actionButtons {
-	border: none;
-	margin-bottom: 20px;
-}
-
-#actionButtons .button {
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-.smallinput {
-	min-width: 100px;
-}
-
-.timegrip-table {
-	border: none;
-	table-layout: fixed;
-}
-
-.timegrip-table select {
-	width: 150px;
-}
-.timegrip-table table,
-.timegrip-table input {
-	margin-bottom: 0;
-}
-
-.timegrip-table table {
-	border: none;
-	background: none;
-}
-
-.timegrip-table .datectrl {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.timegrip-label {
-	font-size: 13px;
-	display: block;
-}
-
-.timegrip-input[type="text"] {
-	font-size: 12px;
-	line-height: 18px;
-	width: 100%;
-	padding: 5px;
-}
-.timegrip-table input[type="text"]:focus {
-	border: 2px solid #159edd;
-	outline: none;
-}
-
-
-
-.timegrip-activity-res,
-.timegrip-project-search-res,
-.timegrip-input-holder {
-	width: 33.3%;
-	vertical-align: top;
-	display: inline-block;
-	box-sizing: border-box;
-}
-
-.timegrip-activity-res,
-.timegrip-project-search-res {
-	max-height: 300px;
-	overflow: auto;
-}
-
-.timegrip-project-search-res {
-	padding: 0 20px;
-}
-
-.timegrip-help-text {
-	display: none;
-	position: absolute;
-	bottom: -30px;
-	color: grey;
-}
-
-.side-nav {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	background: #fff;
-}
-
-.side-nav li {
-	padding: 5px 0;
-}
-
-.side-nav .active a {
-	color: #159edd;
-}
-
-.timegrip-project-search-res li:nth-child(even),
-.timegrip-activity-res li:nth-child(even) {
-	background: #f7f7f7;
-}
-
-.timegrip-proj-res-item,
-.timegrip-activity-res-item {
-	display: inline-block;
-	padding: 0 0 0 10px;
-	position: relative;
-}
-.timegrip-proj-res-item:focus,
-.timegrip-activity-res-item:focus {
-	outline: none;
-}
-.timegrip-proj-res-item .arrow,
-.timegrip-activity-res-item .arrow{
-	display: none;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 5px;
-	height: 100%;
-	background: #159edd;
-}
-
-.timegrip-proj-res-item:focus .arrow,
-.timegrip-activity-res-item:focus .arrow {
-	display: block;
-}
-
-.timegrip-like-button {
-	display: inline-block;
-	padding: 5px 20px;
-	margin: 0 5px;
-	cursor: pointer;
-	box-sizing: border-box;
-	border: 0;
-	border-radius: 6px;
-	resize: none;
-	padding: 5px 8px;
-	font-size: 12px;
-}
-
-
-
-
-
-
-.timegrip-personal-container {
-	position: absolute;
-	right: 10px;
-	top: 73px;
-	bottom: 0;
-	background: transparent;
-	width: 350px;
-	overflow: auto;
-	padding: 0 10px 25px !important;
-	border: 0 solid #000;
-	border-width: 0!important;
-}
-
-.timegrip-favorite-container,
-.timegrip-your-project-container {
-	margin: 0;
-	padding: 10px 0;
-	list-style: none;
-	background: #fff;
-	overflow: hidden;
-	padding: 17px 17px 0;
-	margin-bottom: 20px;
-	box-shadow: 0 0 5px rgba(0,0,0,.1);
-}
-
-.timegrip-favorite-container h2,
-.timegrip-your-project-container h2 {
-	font-family: "Source Sans Pro";
-	font-size: 2em;
-	font-weight: 400;
-}
-
-.timegrip-personal-container ul {
-	list-style-type: none;
-	padding-left: 0;
-	padding-bottom: 20px;
-}
-
-.timegrip-personal-container a {
-	color: rgb(100,100,100);
-}
-
-.timegrip-favorite-holder {
-	height: auto;
-	max-height: 250px;
-	overflow: auto;
-}
-.timegrip-fav-list li {
-	margin: 8px 0;
-}
-.timegrip-your-proj-list li {
-	margin: 8px 0;
-	padding: 0 0 0 10px;
-}
-.timegrip-your-proj-list .timegrip-your-proj-group {
-	font-weight: bold;
-	padding: 15px 0 0;
-}
-.timegrip-fav-remove {
-	margin: 0 5px;
-	cursor: pointer;
-	color: rgb(222,031,085);
-	float: right;
-}
-
-
-
-
-
-#regHR_notes,
-#regMessage {
-	padding: 5px 10px;
-}
-
-#hourList,
-#itemList {
-	background: white;
-	padding: 10px;
-}
-
-#hourList > table,
-#itemList > table {
-	width: 100%;
-}
-
-#hourList td,
-#itemList td {
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-
-#hourList td:last-of-type,
-#itemList td:last-of-type {
-	text-align: right;
-}
-
-#itemList td:last-of-type a {
-	display: inline-block;
-	margin-left: 20px;
-}
-
-#itemSubmitControls,
-#hourSubmitControls {
-	margin-bottom: 20px; 
-	text-align: right;
-}
-
-
-td.row1,
-td.row2 {
-	padding: 8px;
-}
-
-
 
-body > div:first-of-type {
-	max-width: 1000px;
-	margin: auto;
-	padding-right: 390px !important;
-	padding-bottom: 20px;
-	padding-left: 20px !important;
+@media only screen {
+	body {
+		color: #343434;
+		background: url(http://www.creuna.dk/static/img/noice.png) #e6e6e6;
+	}
+
+
+	h1, h2, h3, h4, h5 {
+		color: #343434;
+		font-family: "Source Sans Pro";
+	}
+
+	h1 {
+	   font-weight: 700;
+	   font-size: 2em;
+	   line-height: 1.2;
+	   text-align: center;
+	   text-transform: uppercase;
+	   font-style: normal;
+
+	   padding: 10px 0;
+	}
+
+	a {
+		color: #03aaf6;
+	}
+
+	a:hover,
+	a:active {
+		color: #1b7097;;
+	}
+
+	.mmenucontainer a {
+		color: #fff;
+	}
+
+	.mmenucontainer a:hover {
+		color: #03aaf6;
+	}
+
+	input,
+	.timegrip-like-button {
+		box-sizing: border-box;
+		border: 1px solid #c6c6c6;
+		border-radius: 6px;
+		resize: none;
+		padding: 8px;
+	}
+
+	input[type="button"],
+	input.button {
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+		border: 0 !important;
+		box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	}
+
+	th {
+		background: #343434 !important;
+		padding: 5px;
+	}
+
+
+	#dspact_SubmitAll {
+		min-width: 200px;
+		float: right;
+		margin-left: 20px;
+	}
+
+	#dspact_Insert2,
+	#dspact_OK2,
+	#dspact_SubmitAll,
+	.timegrip-like-button {
+		color: #fff;
+		font-weight: 600;
+		padding: 10px 40px;
+		font-size: 16px;
+		border: 0;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(255,255,255,.8) inset,0 -1px 1px rgba(0,0,0,.2) inset;
+		text-shadow: 0 1px rgba(0,0,0,.6);
+	}
+
+	#dspact_OK2,
+	#dspact_SubmitAll,
+	.timegrip-like-button {
+		background: #159edd;
+	}
+	#dspact_OK2:hover,
+	#dspact_SubmitAll:hover,
+	.timegrip-like-button:hover,
+	#dspact_OK2:active,
+	#dspact_SubmitAll:active,
+	.timegrip-like-button:active {
+		background: #1b7097;
+		color: #fff;
+		text-decoration: none;
+	}
+
+	#dspact_Insert2 {
+		background: rgb(117,206,039);
+	}
+	#dspact_Insert2:hover,
+	#dspact_Insert2:active {
+		background: rgb(102,179,039);
+	}
+
+	#dspact_Cancel3 {
+		background: #fff;
+	}
+	#dspact_Cancel3:hover,
+	#dspact_Cancel3:active {
+		background: #e6e6e6;
+		border: 0;
+	}
+
+
+
+
+
+	body > table:first-of-type > tbody > tr > td {
+		width: 100%;
+		height: 50px;
+		border-bottom: 1px solid #1f1f1f;
+		box-shadow: 0 -2px 10px rgba(0,0,0,.5);
+		background: #000 url(http://www.creuna.dk/static/img/logo_creuna_site.png) no-repeat 10px center !important;
+		padding-left: 150px !important;
+		vertical-align: middle !important;
+	}
+
+	body > table:first-of-type > tbody > tr > td + td {
+		display: none;
+	}
+
+	body > table:first-of-type > tbody > tr > td td {
+		padding-bottom: 0 !important;
+		vertical-align: middle !important;
+	}
+
+
+
+
+
+
+	.visuallyhidden {
+		position: absolute;
+		left: -9999px;
+	}
+
+
+	.timegrip-holder {
+		margin-bottom: 20px;
+		width: 100%;
+		padding: 2em 0;
+		border-bottom: 1px solid #c6c6c6;
+		box-shadow: 0px 2px 0 -1px #fff;
+	}
+
+	#actionButtons {
+		border: none;
+		margin-bottom: 20px;
+	}
+
+	#actionButtons .button {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.smallinput {
+		min-width: 100px;
+	}
+
+	.timegrip-table {
+		border: none;
+		table-layout: fixed;
+	}
+
+	.timegrip-table select {
+		width: 150px;
+	}
+	.timegrip-table table,
+	.timegrip-table input {
+		margin-bottom: 0;
+	}
+
+	.timegrip-table table {
+		border: none;
+		background: none;
+	}
+
+	.timegrip-table .datectrl {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	.timegrip-label {
+		font-size: 13px;
+		display: block;
+	}
+
+	.timegrip-input[type="text"] {
+		font-size: 12px;
+		line-height: 18px;
+		width: 100%;
+		padding: 5px;
+	}
+	.timegrip-table input[type="text"]:focus {
+		border: 2px solid #159edd;
+		outline: none;
+	}
+
+
+
+	.timegrip-activity-res,
+	.timegrip-project-search-res,
+	.timegrip-input-holder {
+		width: 33.3%;
+		vertical-align: top;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+
+	.timegrip-activity-res,
+	.timegrip-project-search-res {
+		max-height: 300px;
+		overflow: auto;
+	}
+
+	.timegrip-project-search-res {
+		padding: 0 20px;
+	}
+
+	.timegrip-help-text {
+		display: none;
+		position: absolute;
+		bottom: -30px;
+		color: grey;
+	}
+
+	.side-nav {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		background: #fff;
+	}
+
+	.side-nav li {
+		padding: 5px 0;
+	}
+
+	.side-nav .active a {
+		color: #159edd;
+	}
+
+	.timegrip-project-search-res li:nth-child(even),
+	.timegrip-activity-res li:nth-child(even) {
+		background: #f7f7f7;
+	}
+
+	.timegrip-proj-res-item,
+	.timegrip-activity-res-item {
+		display: inline-block;
+		padding: 0 0 0 10px;
+		position: relative;
+	}
+	.timegrip-proj-res-item:focus,
+	.timegrip-activity-res-item:focus {
+		outline: none;
+	}
+	.timegrip-proj-res-item .arrow,
+	.timegrip-activity-res-item .arrow{
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 5px;
+		height: 100%;
+		background: #159edd;
+	}
+
+	.timegrip-proj-res-item:focus .arrow,
+	.timegrip-activity-res-item:focus .arrow {
+		display: block;
+	}
+
+	.timegrip-like-button {
+		display: inline-block;
+		padding: 5px 20px;
+		margin: 0 5px;
+		cursor: pointer;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 6px;
+		resize: none;
+		padding: 5px 8px;
+		font-size: 12px;
+	}
+
+
+
+
+
+
+	.timegrip-personal-container {
+		position: absolute;
+		right: 10px;
+		top: 73px;
+		bottom: 0;
+		background: transparent;
+		width: 350px;
+		overflow: auto;
+		padding: 0 10px 25px !important;
+		border: 0 solid #000;
+		border-width: 0!important;
+	}
+
+	.timegrip-favorite-container,
+	.timegrip-your-project-container {
+		margin: 0;
+		padding: 10px 0;
+		list-style: none;
+		background: #fff;
+		overflow: hidden;
+		padding: 17px 17px 0;
+		margin-bottom: 20px;
+		box-shadow: 0 0 5px rgba(0,0,0,.1);
+	}
+
+	.timegrip-favorite-container h2,
+	.timegrip-your-project-container h2 {
+		font-family: "Source Sans Pro";
+		font-size: 2em;
+		font-weight: 400;
+	}
+
+	.timegrip-personal-container ul {
+		list-style-type: none;
+		padding-left: 0;
+		padding-bottom: 20px;
+	}
+
+	.timegrip-personal-container a {
+		color: rgb(100,100,100);
+	}
+
+	.timegrip-favorite-holder {
+		height: auto;
+		max-height: 250px;
+		overflow: auto;
+	}
+	.timegrip-fav-list li {
+		margin: 8px 0;
+	}
+	.timegrip-your-proj-list li {
+		margin: 8px 0;
+		padding: 0 0 0 10px;
+	}
+	.timegrip-your-proj-list .timegrip-your-proj-group {
+		font-weight: bold;
+		padding: 15px 0 0;
+	}
+	.timegrip-fav-remove {
+		margin: 0 5px;
+		cursor: pointer;
+		color: rgb(222,031,085);
+		float: right;
+	}
+
+
+
+
+
+	#regHR_notes,
+	#regMessage {
+		padding: 5px 10px;
+	}
+
+	#hourList,
+	#itemList {
+		background: white;
+		padding: 10px;
+	}
+
+	#hourList > table,
+	#itemList > table {
+		width: 100%;
+	}
+
+	#hourList td,
+	#itemList td {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+
+	#hourList td:last-of-type,
+	#itemList td:last-of-type {
+		text-align: right;
+	}
+
+	#itemList td:last-of-type a {
+		display: inline-block;
+		margin-left: 20px;
+	}
+
+	#itemSubmitControls,
+	#hourSubmitControls {
+		margin-bottom: 20px; 
+		text-align: right;
+	}
+
+
+	td.row1,
+	td.row2 {
+		padding: 8px;
+	}
+
+
+
+	body > div:first-of-type {
+		max-width: 1000px;
+		margin: auto;
+		padding-right: 390px !important;
+		padding-bottom: 20px;
+		padding-left: 20px !important;
+	}
+}
+@media print {
+	.timegrip-help-text,
+	.timegrip-holder,
+	.timegrip-like-button,
+	.timegrip-personal-container {
+		display: none;
+	}
 }
