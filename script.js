@@ -28,7 +28,7 @@ function timeGripHelper() {
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
       $favoriteButton = $j('<a class="timegrip-like-button">Add to favorites</a>'),
-      $favoritesContainer = $j('<div class="timegrip-favorite-container"><h2>Favorite activities</h2><div class="timegrip-favorite-holder"></div></div>'),
+      $favoritesContainer = $j('<div class="timegrip-personal-container"><div class="timegrip-favorite-container"><h2>Favorite activities</h2><div class="timegrip-favorite-holder"></div></div></div>'),
       $favoriteHolder,
       $yourProjects,
       favoritesArray = window.localStorage.getItem('favorites') ? JSON.parse(window.localStorage.getItem('favorites')) : [],
