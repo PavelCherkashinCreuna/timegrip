@@ -5,7 +5,7 @@
   "icons": { "128": "icon.png" },
   "content_scripts": [
     {
-      "matches": ["http://dktimegrip/*","https://timegrip.creuna.dk/*"],
+      "matches": ["http://dktimegrip/*","https://timegrip.creuna.dk/*","https://timegrip.creuna.no/*"],
       "js": ["mappy_content_script.js"],
       "css": ["styles.css"]
        }
