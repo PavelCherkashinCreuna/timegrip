@@ -1,6 +1,6 @@
 {
   "name": "Timegrip",
-  "version": "0.1.1",
+  "version": "0.5",
   "description": "Timegrip helper",
   "icons": { "128": "icon.png" },
   "content_scripts": [
