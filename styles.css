@@ -358,11 +358,13 @@ body > table:first-of-type > tbody > tr > td td {
 }
 .timegrip-your-proj-list .timegrip-your-proj-group {
 	font-weight: bold;
-	padding: 0;
+	padding: 15px 0 0;
 }
 .timegrip-fav-remove {
 	margin: 0 5px;
 	cursor: pointer;
+	color: rgb(222,031,085);
+	float: right;
 }
 
 
@@ -380,10 +382,25 @@ body > table:first-of-type > tbody > tr > td td {
 	padding: 10px;
 }
 
+#hourList > table,
+#itemList > table {
+	width: 100%;
+}
+
 #hourList td,
 #itemList td {
 	padding-top: 3px;
 	padding-bottom: 3px;
+}
+
+#hourList td:last-of-type,
+#itemList td:last-of-type {
+	text-align: right;
+}
+
+#itemList td:last-of-type a {
+	display: inline-block;
+	margin-left: 20px;
 }
 
 #itemSubmitControls,
@@ -392,6 +409,11 @@ body > table:first-of-type > tbody > tr > td td {
 	text-align: right;
 }
 
+
+td.row1,
+td.row2 {
+	padding: 8px;
+}
 
 
 
