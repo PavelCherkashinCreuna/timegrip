@@ -340,6 +340,7 @@
 	}
 
 	.timegrip-fav-list li {
+		display: table;
 		margin: 8px 0;
 	}
 
@@ -353,7 +354,12 @@
 		padding: 15px 0 0;
 	}
 
+	.timegrip-fav-item {
+		display: table-cell;
+	}
+
 	.timegrip-fav-remove {
+		display: table-cell;
 		margin: 0 5px;
 		cursor: pointer;
 		color: rgb(222, 031, 085);
