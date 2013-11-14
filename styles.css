@@ -356,6 +356,7 @@
 
 	.timegrip-fav-item {
 		display: table-cell;
+		width: 85%;
 	}
 
 	.timegrip-fav-remove {
