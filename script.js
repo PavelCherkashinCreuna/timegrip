@@ -191,20 +191,30 @@ function timeGripHelper() {
       	}
       },
       parseTimeInput = function (input){
-    	var regex = /([0-9]{1,2})([0-9]{2})-([0-9]{1,2})([0-9]{2})/;
-    	var match = regex.exec(input);
-    	
-    	if(match != null){		
-    		var fromHours= Number(match[1]);
-            var fromMinutes = Number(match[2]);
-            var toHours = Number(match[3]);
-            var toMinutes = Number(match[4]);
-    		
-    		var totalMinutes = (toHours * 60) + toMinutes - (fromHours * 60) - fromMinutes;
+    	if(input.indexOf("-") !== -1) {
+			var inputs = input.split("-");
+			var fromMinutes = calcMinutes(inputs[0]);
+			var toMinutes = calcMinutes(inputs[1]);
+			
+    		var totalMinutes = toMinutes - fromMinutes;
     		
     		return totalMinutes/60;
     	}		
     	return input;
+		
+		function calcMinutes(time){
+			var hours = 0;
+			var minutes	= 0;
+			var length = time.length;
+			
+			if (length > 2){
+				hours = Number(time.substring(0,length-2));
+				minutes = Number(time.substring(time.length-2));
+			} else {
+				hours = Number(time);
+			}
+			return hours * 60 + minutes;
+		}
       },
       removeFavActivity = function ($elem) {
       	$elem.parent().remove();
