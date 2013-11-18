@@ -24,6 +24,7 @@ function timeGripHelper() {
       $input = $j('<input type="text" class="timegrip-input" />'),
       $descrip = $j('#edtDscdlgCH'),
       $yourProjectsSelect = $j('#regHR_prj1'),
+      $timeInput = $j('#edtQtyG'),
       $yourProjectContainer = $j('<div class="timegrip-your-project-container"><h2>Your projects</h2><div class="timegrip-your-projects"></div></div>'),
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
@@ -49,6 +50,9 @@ function timeGripHelper() {
         $favoritesContainer.appendTo('body');
         $yourProjectContainer.appendTo($favoritesContainer);
 
+        $timeInput[0].maxLength = 9;
+        $timeInput[0].size = 9
+        
         $favoriteHolder = $j('.timegrip-favorite-holder');
         $yourProjects = $j('.timegrip-your-projects');
         renderFavorites();
@@ -137,7 +141,7 @@ function timeGripHelper() {
       },
       setActivity = function (value) {
         $activitySelect.val(value);
-        $('#edtQtyG').focus();
+        $timeInput.focus();
       },
       getActivity = function () {
       	var html = '<ul class="side-nav">';
@@ -186,6 +190,32 @@ function timeGripHelper() {
 	  		$favoritesContainer.show();
       	}
       },
+      parseTimeInput = function (input){
+    	if(input.indexOf("-") !== -1) {
+			var inputs = input.split("-");
+			var fromMinutes = calcMinutes(inputs[0]);
+			var toMinutes = calcMinutes(inputs[1]);
+			
+    		var totalMinutes = toMinutes - fromMinutes;
+    		
+    		return totalMinutes/60;
+    	}		
+    	return input;
+		
+		function calcMinutes(time){
+			var hours = 0;
+			var minutes	= 0;
+			var length = time.length;
+			
+			if (length > 2){
+				hours = Number(time.substring(0,length-2));
+				minutes = Number(time.substring(time.length-2));
+			} else {
+				hours = Number(time);
+			}
+			return hours * 60 + minutes;
+		}
+      },
       removeFavActivity = function ($elem) {
       	$elem.parent().remove();
       	getFavories();
@@ -211,6 +241,10 @@ function timeGripHelper() {
         });
         $descrip.on('blur', function () {
         	$helpText.hide();
+        });
+        $timeInput.on('blur', function () {
+        	var result = parseTimeInput($j(this).val())			
+        	$j(this).val(result.toString().replace(".", ","));
         });
         $favoriteButton.on('click', function (e) {
         	e.preventDefault();
@@ -242,6 +276,3 @@ function timeGripHelper() {
 
   init();
 }
-
-
-
