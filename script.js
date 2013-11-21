@@ -25,6 +25,7 @@ function timeGripHelper() {
       $descrip = $j('#edtDscdlgCH'),
       $yourProjectsSelect = $j('#regHR_prj1'),
       $timeInput = $j('#edtQtyG'),
+      $dateInput = $j('#ITMDate'),
       $yourProjectContainer = $j('<div class="timegrip-your-project-container"><h2>Your projects</h2><div class="timegrip-your-projects"></div></div>'),
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
@@ -58,6 +59,7 @@ function timeGripHelper() {
         renderFavorites();
         renderYourProjects();
         attachEvents();
+        renderDescriptionSuggestion();
         $input.focus();
       },
       searchProject = function (value) {
@@ -112,6 +114,20 @@ function timeGripHelper() {
           html += '<li><a class="timegrip-proj-res-item" href="#">' + value.text + '<span class="arrow"></span></a></li>';
         });
         $projectSearchRes.append(html + '</ul>');
+      },
+      renderDescriptionSuggestion = function () {
+      	$descrip.attr('list','suggestions').attr('autocomplete','off');
+      	var $dataList = $j('<datalist id="suggestions" />');
+      	var html = '';
+      	$('#hourList').find('> table > tbody > tr > td:nth-child(4n)').each(function () {
+      		var text= $j.trim($j(this).text());
+      		if (text) {
+      			html += '<option value="' + text + '"/>';
+      		}
+      	});
+      	$dataList.html(html);
+      	$descrip.parent().append($dataList);
+
       },
       setProject = function (text, callback) {
         var textOrigin = $.isNumeric(text) ? text : text.toLowerCase();
@@ -216,6 +232,13 @@ function timeGripHelper() {
 			return hours * 60 + minutes;
 		}
       },
+      converTimespanToNumbers = function () {
+      	var result = parseTimeInput($timeInput.val());
+        $timeInput.val(result.toString().replace(".", ","));
+      },
+      beforeSubmit = function () {
+      	converTimespanToNumbers();
+      },
       removeFavActivity = function ($elem) {
       	$elem.parent().remove();
       	getFavories();
@@ -243,8 +266,7 @@ function timeGripHelper() {
         	$helpText.hide();
         });
         $timeInput.on('blur', function () {
-        	var result = parseTimeInput($j(this).val())			
-        	$j(this).val(result.toString().replace(".", ","));
+        	converTimespanToNumbers();
         });
         $favoriteButton.on('click', function (e) {
         	e.preventDefault();
@@ -267,8 +289,9 @@ function timeGripHelper() {
         	var $this = $j(this);
         	setProject($this.data('project'), function () {});
         });
-        $descrip.on('keydown', function (e) {
-        	if (e.which == '13') {	
+        $dateInput.add($timeInput).add($descrip).on('keydown', function (e) {
+        	if (e.which == '13') {
+        		beforeSubmit();
         		$j('#dspact_Insert2').trigger('click');
         	}
         })
