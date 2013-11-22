@@ -119,9 +119,11 @@ function timeGripHelper() {
       	$descrip.attr('list','suggestions').attr('autocomplete','off');
       	var $dataList = $j('<datalist id="suggestions" />');
       	var html = '';
+      	var arr = [];
       	$('#hourList').find('> table > tbody > tr > td:nth-child(4n)').each(function () {
       		var text= $j.trim($j(this).text());
-      		if (text) {
+      		if (text && $j.inArray(text, arr) === -1) {
+      			arr.push(text);
       			html += '<option value="' + text + '"/>';
       		}
       	});
