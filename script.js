@@ -24,6 +24,8 @@ function timeGripHelper() {
       $input = $j('<input type="text" class="timegrip-input" />'),
       $descrip = $j('#edtDscdlgCH'),
       $yourProjectsSelect = $j('#regHR_prj1'),
+      $projectsSelectOnItemRecord = $j('#regITM_prj2'),
+      isItemRecordPage = $projectsSelectOnItemRecord.length,
       $timeInput = $j('#edtQtyG'),
       $dateInput = $j('#ITMDate'),
       $yourProjectContainer = $j('<div class="timegrip-your-project-container"><h2>Your projects</h2><div class="timegrip-your-projects"></div></div>'),
@@ -133,29 +135,43 @@ function timeGripHelper() {
       },
       setProject = function (text, callback) {
         var textOrigin = $.isNumeric(text) ? text : text.toLowerCase();
-        $j('#regHR_set1').hide();
-        $j('#regHR_set2').show();
-        $projectSelect.find('option').each(function () {
-          var $this = $j(this),
-              text = $this.text().toLowerCase(),
-              id = parseInt($this.attr('value'), 10);
+        if (!isItemRecordPage) {
+	        $j('#regHR_set1').hide();
+	        $j('#regHR_set2').show();
+	        $projectSelect.find('option').each(function () {
+	          var $this = $j(this),
+	              text = $this.text().toLowerCase(),
+	              id = parseInt($this.attr('value'), 10);
 
-          if (text == textOrigin || id == textOrigin) {
-            $projectSelect.val(id);
-            $projectSelect.trigger('change');
-            timer = setTimeout(function () {
-            	if (timer) {
-            		clearTimeout(timer);
-            	}
-            	if (typeof callback == 'function') {
-            		callback();
-            	} else {
-            		getActivity();
-            		$activityRes.find('.timegrip-activity-res-item').eq(0).focus();
-            	}
-            }, 500)
-          }
-        });
+	          if (text == textOrigin || id == textOrigin) {
+	            $projectSelect.val(id);
+	            $projectSelect.trigger('change');
+	            timer = setTimeout(function () {
+	            	if (timer) {
+	            		clearTimeout(timer);
+	            	}
+	            	if (typeof callback == 'function') {
+	            		callback();
+	            	} else {
+	            		getActivity();
+	            		$activityRes.find('.timegrip-activity-res-item').eq(0).focus();
+	            	}
+	            }, 500)
+	          }
+	        });
+        } else {
+        	$j('#regITM_set1').hide();
+	        $j('#regITM_set2').show();
+	        $projectsSelectOnItemRecord.find('option').each(function () {
+	          var $this = $j(this),
+	              text = $this.text().toLowerCase(),
+	              id = parseInt($this.attr('value'), 10);
+
+	          if (text == textOrigin || id == textOrigin) {
+	            $projectsSelectOnItemRecord.val(id);
+	          }
+	        });
+        }
       },
       setActivity = function (value) {
         $activitySelect.val(value);
