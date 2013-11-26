@@ -17,11 +17,10 @@ $j(function() {
 function timeGripHelper() {
   var $holder = $j('<div class="timegrip-holder"></div>'),
       $inputWrapper = $j('<div class="timegrip-input-holder"></div>'),
-      $label = $j('<label class="timegrip-label">Search:</label>'),
       $projectSearchRes = $j('<div class="timegrip-project-search-res"></div>'),
       $activityRes = $j('<div class="timegrip-activity-res"></div>'),
       $helpText = $j('<div class="timegrip-help-text">"ID 193: Create rel-alternate-hreflang annotations on each page" - Story <br/> "DE 373: Video panel needs to be schedule or hidden" - Defect</div>'),
-      $input = $j('<input type="text" class="timegrip-input" />'),
+      $input = $j('<input type="text" class="timegrip-input" placeholder="Search project" />'),
       $descrip = $j('#edtDscdlgCH'),
       $yourProjectsSelect = $j('#regHR_prj1'),
       $projectsSelectOnItemRecord = $j('#regITM_prj2'),
@@ -32,13 +31,19 @@ function timeGripHelper() {
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
       $favoriteButton = $j('<a class="timegrip-like-button">Add to favorites</a>'),
+      $timerangeContainer = $j('<div class="timegrip-timerange"></div>'),
+      $timerangeHeader = $j('<h2 class="timegrip-timerange-header">You can log time ranges here <span>(i.e. vacation)</span></h2>'),
+      $timerangeFromInput = $j('<input type="text" id="timerange-from" class="timegrip-range-input" maxlength="10" placeholder="From" />'),
+      $timerangeToInput = $j('<input type="text" id="timerange-to" class="timegrip-range-input" placeholder="To" maxlength="10" />'),
+      $timerangeSubmitButton = $j('<input type="button" class="timegrip-timerange-button" value="Add period">'),
+      $timerangeLoader = $j('<div class="timerange-loader"></div>'),
       $favoritesContainer = $j('<div class="timegrip-personal-container"><div class="timegrip-favorite-container"><h2>Favorite activities</h2><div class="timegrip-favorite-holder"></div></div></div>'),
       $favoriteHolder,
       $yourProjects,
+      userID = $j('[name="res_ID"]').val(),
       favoritesArray = window.localStorage.getItem('favorites') ? JSON.parse(window.localStorage.getItem('favorites')) : [],
       timer,
       init = function () {
-        $inputWrapper.append($label);
         $inputWrapper.append($input);
         $holder.append($inputWrapper);
         $holder.append($projectSearchRes);
@@ -60,9 +65,19 @@ function timeGripHelper() {
         $yourProjects = $j('.timegrip-your-projects');
         renderFavorites();
         renderYourProjects();
+        rendertimerange();
         attachEvents();
         renderDescriptionSuggestion();
         $input.focus();
+      },
+      rendertimerange = function () {
+      	$timerangeContainer.append($timerangeHeader)
+      					.append($timerangeFromInput)
+      					.append($timerangeToInput)
+      					.append($timerangeSubmitButton)
+      					.append($timerangeLoader);
+
+      	$j('#regHR_notes').before($timerangeContainer);
       },
       searchProject = function (value) {
         var res = [];
@@ -261,6 +276,63 @@ function timeGripHelper() {
       	$elem.parent().remove();
       	getFavories();
       },
+      convertToDateFormat = function ( date ) {
+      	var year = date.slice(6),
+      		month = date.slice(3,5),
+      		day = date.slice(0,2);
+
+      	return new Date([year,month, day].join('.'));
+      },
+      logTimeRange = function () {
+      	var projectId = $yourProjectsSelect.is(':visible') ? $yourProjectsSelect.val() : $projectSelect.val(),
+      		activityId = $activitySelect.val(),
+      		timeStart = convertToDateFormat($timerangeFromInput.val()),
+      		timeEnd = convertToDateFormat($timerangeToInput.val()),
+      		time = $timeInput.val(),
+      		description = $j.trim($descrip.val()),
+      		dateArr;
+
+      	if (!time) {
+      		alert('Check the hours field');
+      		return false;
+      	}
+      	if (!description) {
+      		alert('Check the description field');
+      		return false;
+      	}
+      	if (!isNaN(timeStart) && !isNaN(timeEnd)) {
+      		dateArr = getDates(timeStart, timeEnd);
+      	} else {
+      		alert('Incorrect date format(it should be dd,mm,yyyy)');
+      	}
+
+      	if (dateArr.length) {
+      		window.timeRangeDetails = {
+      			userID: userID,
+      			projectId: projectId,
+      			activityId: activityId,
+      			description: description,
+      			time: time,
+      			dateArr: dateArr
+      		};
+      		$timerangeLoader.css('visibility','visible');
+      		window.timeRangeCallback();
+      	}
+      	// ;
+      },
+      getDates = function (startDate, stopDate) {
+		    var dateArray = new Array();
+		    var currentDate = startDate;
+		    var day;
+		    while (currentDate <= stopDate) {
+		    	day = currentDate.getDay();
+		    	if (day !== 6 && day !== 0) { // exclude Sun and Sat
+		        	dateArray.push( new Date (currentDate) )
+		    	}
+		        currentDate = currentDate.addDays(1);
+		    }
+		    return dateArray;
+	  },
       attachEvents = function () {
         $input.on('keyup', function (e) {
           searchProject($j(this).val());
@@ -312,8 +384,56 @@ function timeGripHelper() {
         		beforeSubmit();
         		$j('#dspact_Insert2').trigger('click');
         	}
-        })
+        });
+        $timerangeSubmitButton.on('click', function (e) {
+        	e.preventDefault();
+        	logTimeRange();
+        });
+        $timerangeFromInput.add($timerangeToInput).on('keydown', function (e) {
+        	if (e.which == '13') {
+        		logTimeRange();
+        	}
+        });
+
+
+        $( ".timegrip-range-input" ).dateControl({
+			showOn			: "button",
+			buttonImage		: "js/navigation/btn_calender.gif",
+			buttonImageOnly	: true,
+			firstDay		: 1,
+			changeMonth		: true,
+			changeYear		: true,
+			showWeek		: true,
+			weekHeader		: '',
+			dateFormat		: "dd.mm.yy",
+			dayNames		: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+			dayNamesMin		: ['s','m','t','w','t','f','s'],
+			//dayNamesShort	:
+			monthNames		: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+			// monthNamesShort	: ['January','February','March','April','May','June','July','August','September','October','November','December']
+			monthNamesShort	: ['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
+		});
+		$ (".timegrip-range-input").dateControl("setClickOnSelectDate", true) ;
+
       };
 
   init();
+  window.timeRangeCallback = function () {
+  	var details = window.timeRangeDetails,
+  		date;
+
+  	if (details.dateArr.length) {
+  		date = [details.dateArr[0].getDate(), details.dateArr[0].getMonth() + 1, details.dateArr[0].getFullYear()].join('.');
+  		window.timeRangeDetails.dateArr.shift();
+  		updateItem(-1, details.userID, details.projectId, details.description ,date,details.activityId, "time", details.time, "null", -1, "1", -1, "null", "regHR_notes", "timeRangeCallback");
+  	} else {
+  		window.location.reload();
+  	}
+  }
+}
+
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() + days);
+    return dat;
 }
