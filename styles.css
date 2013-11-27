@@ -223,6 +223,7 @@
 		vertical-align: top;
 		display: inline-block;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	.timegrip-activity-res,
@@ -428,6 +429,16 @@
 		padding-right: 390px !important;
 		padding-bottom: 20px;
 		padding-left: 20px !important;
+	}
+
+	.timegrip-input-clear-button {
+		position: absolute;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 1;
+		top: 8px;
+		right: 10px;
 	}
 }
 
