@@ -71,6 +71,7 @@
 	#dspact_Insert2,
 	#dspact_OK2,
 	#dspact_SubmitAll,
+	.timegrip-timerange-toggler,
 	.timegrip-like-button {
 		color: #fff;
 		font-weight: 600;
@@ -82,14 +83,20 @@
 		text-shadow: 0 1px rgba(0, 0, 0, .6);
 	}
 
+	.timegrip-timerange-toggler {
+		margin-bottom: 15px !important;
+	}
+
 	#dspact_OK2,
 	#dspact_SubmitAll,
+	.timegrip-timerange-toggler,
 	.timegrip-like-button {
 		background: #159edd;
 	}
 	.timegrip-timerange-button,
 	#dspact_OK2:hover,
 	#dspact_SubmitAll:hover,
+	.timegrip-timerange-toggler:hover,
 	.timegrip-like-button:hover,
 	#dspact_OK2:active,
 	#dspact_SubmitAll:active,
@@ -290,7 +297,7 @@
 	.timegrip-activity-res-item:focus .arrow {
 		display: block;
 	}
-
+	.timegrip-timerange-toggler,
 	.timegrip-like-button {
 		display: inline-block;
 		padding: 5px 20px;
@@ -439,6 +446,27 @@
 		line-height: 1;
 		top: 8px;
 		right: 10px;
+	}
+
+	.timegrip-range-input {
+		width: 76px;
+		margin-right: 10px;
+	}
+	.timegrip-show-timerange #ITMDate + img,
+	.timegrip-show-timerange #ITMDate,
+	.timegrip-show-timerange .timegrip-show-timerange-text,
+	.timegrip-show-timerange  #actionButtons,
+	.timegrip-hide-timerange-text,
+	.timegrip-timerange-wrapper,
+	.timegrip-timerange-button {
+		display: none;
+	}
+	.timegrip-show-timerange .timegrip-hide-timerange-text{
+		display: inline;
+	}
+	.timegrip-show-timerange .timegrip-timerange-button,
+	.timegrip-show-timerange .timegrip-timerange-wrapper{
+		display: block;
 	}
 }
 

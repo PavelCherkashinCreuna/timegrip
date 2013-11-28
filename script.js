@@ -31,13 +31,13 @@ function timeGripHelper() {
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
       $favoriteButton = $j('<a class="timegrip-like-button">Add to favorites</a>'),
-      $timerangeContainer = $j('<div class="timegrip-timerange"></div>'),
-      $timerangeHeader = $j('<h2 class="timegrip-timerange-header">You can log time ranges here <span>(i.e. vacation)</span></h2>'),
+	  $timerangeHeader = $j('<h2 class="timegrip-timerange-header">You can log time ranges here <span>(i.e. vacation)</span></h2>'),
       $timerangeFromInput = $j('<input type="text" id="timerange-from" class="timegrip-range-input" maxlength="10" placeholder="From" />'),
       $timerangeToInput = $j('<input type="text" id="timerange-to" class="timegrip-range-input" placeholder="To" maxlength="10" />'),
       $timerangeSubmitButton = $j('<input type="button" class="timegrip-timerange-button" value="Add period">'),
       $timerangeLoader = $j('<div class="timerange-loader"></div>'),
       $favoritesContainer = $j('<div class="timegrip-personal-container"><div class="timegrip-favorite-container"><h2>Favorite activities</h2><div class="timegrip-favorite-holder"></div></div></div>'),
+      $timeRangeToggler = $j('<a class="timegrip-timerange-toggler"><span class="timegrip-show-timerange-text">Show time ranges</span><span class="timegrip-hide-timerange-text">Hide time ranges</span></a>'),
       $favoriteHolder,
       $yourProjects,
       $userIDInput = $j('[name="res_ID"]'),
@@ -67,7 +67,9 @@ function timeGripHelper() {
         $yourProjectContainer.appendTo($favoritesContainer);
 
         $timeInput[0].maxLength = 9;
-        $timeInput[0].size = 9
+        $timeInput[0].size = 9;
+
+        $holder.after($timeRangeToggler);
         
         var tmpEl = $('<div class="elem"></div>');
         tmpEl.html('&aring;');
@@ -91,13 +93,18 @@ function timeGripHelper() {
         $input.focus();
       },
       rendertimerange = function () {
-      	$timerangeContainer.append($timerangeHeader)
-      					.append($timerangeFromInput)
-      					.append($timerangeToInput)
-      					.append($timerangeSubmitButton)
-      					.append($timerangeLoader);
+      	var $timeRangeContainer = $j('<div class="timegrip-timerange-container"></div>'),
+      		$timeRangeToWrapper = $j('<div class="timegrip-timerange-wrapper"></div>'),
+      		$timeRangeFromWrapper = $j('<div class="timegrip-timerange-wrapper"></div>');
 
-      	$j('#regHR_notes').before($timerangeContainer);
+      	$timeRangeToWrapper.append($timerangeToInput);
+      	$timeRangeFromWrapper.append($timerangeFromInput);
+
+      	$dateInput.parent().append($timeRangeFromWrapper);
+      	$timeRangeFromWrapper.after($timeRangeToWrapper);
+
+      	$j('#regHR_notes').before($timerangeSubmitButton);
+      	$timerangeSubmitButton.after($timerangeLoader);
       },
       searchProject = function (value) {
         var res = [];
@@ -407,8 +414,12 @@ function timeGripHelper() {
         });
         $dateInput.add($timeInput).add($descrip).on('keydown', function (e) {
         	if (e.which == '13') {
-        		beforeSubmit();
-        		$j('#dspact_Insert2').trigger('click');
+        		if (!$j('body').hasClass('timegrip-show-timerange')) {
+	        		beforeSubmit();
+	        		$j('#dspact_Insert2').trigger('click');
+        		} else {
+        			logTimeRange();
+        		}
         	}
         });
         $timerangeSubmitButton.on('click', function (e) {
@@ -424,6 +435,11 @@ function timeGripHelper() {
         $inputClearButton.on('click', function () {
         	clearSearchResults();
         });
+
+        $timeRangeToggler.on('click', function (e) {
+        	e.preventDefault();
+        	$j('body').toggleClass('timegrip-show-timerange');
+        })
 
 
         $( ".timegrip-range-input" ).dateControl({
