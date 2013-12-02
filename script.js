@@ -18,7 +18,6 @@ function timeGripHelper() {
       $inputWrapper = $j('<div class="timegrip-input-holder"></div>'),
       $projectSearchRes = $j('<div class="timegrip-project-search-res"></div>'),
       $activityRes = $j('<div class="timegrip-activity-res"></div>'),
-      $helpText = $j('<div class="timegrip-help-text">"ID 193: Create rel-alternate-hreflang annotations on each page" - Story <br/> "DE 373: Video panel needs to be schedule or hidden" - Defect</div>'),
       $input = $j('<input type="text" class="timegrip-input" placeholder="Search project" />'),
       $inputClearButton = $j('<span class="timegrip-input-clear-button">x</span>'),
       $descrip = $j('#edtDscdlgCH'),
@@ -58,7 +57,6 @@ function timeGripHelper() {
         $holder.append($activityRes);
         $j('#dlgCH_wfs_ID').after($holder);
         $j('#actionButtons').prev().addClass('timegrip-table');
-        $descrip.after($helpText);
         $descrip.parent().wrapInner('<div class="timegrip-help-td"></div>');
         $j('.timegrip-help-td').css('position', 'relative')
         $activitySelect.after($favoriteButton);
@@ -381,12 +379,6 @@ function timeGripHelper() {
           setActivity($j(this).data('id'));
           $j(this).parent().siblings().removeClass('active');
           $j(this).parent().addClass('active');
-        });
-        $descrip.on('focus', function () {
-        	$helpText.show();
-        });
-        $descrip.on('blur', function () {
-        	$helpText.hide();
         });
         $timeInput.on('blur', function () {
         	converTimespanToNumbers();
