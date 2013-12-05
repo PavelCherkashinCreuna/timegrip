@@ -87,8 +87,13 @@ function timeGripHelper() {
         renderYourProjects();
         rendertimerange();
         attachEvents();
+        renderSvgIcon();
         renderDescriptionSuggestion();
         $input.focus();
+      },
+      renderSvgIcon = function () {
+      	var $svg = $j('<svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="delete-garbage" data-iconmelon="Streamline Icon Set:71d4e0470bef1338fd8881be720f5fa1"><g id="Expanded"><g><g><path d="M27.333,31.667H4.667V4.333h22.667V31.667z M6,30.333h20V5.666H6V30.333z"></path></g><g><path  d="M23.333,5.666H8.667V0.333h14.667V5.666z M10,4.333h12V1.666H10V4.333z"></path></g><g><path  d="M10.667,27C10.298,27,10,26.702,10,26.333V9.666C10,9.298,10.298,9,10.667,9c0.369,0,0.667,0.298,0.667,0.666v16.667C11.333,26.702,11.036,27,10.667,27z"></path></g><g><path  d="M16,27c-0.369,0-0.667-0.298-0.667-0.667V9.666C15.333,9.298,15.631,9,16,9s0.667,0.298,0.667,0.666v16.667C16.667,26.702,16.369,27,16,27z"></path></g><g><path  d="M21.333,27c-0.368,0-0.666-0.298-0.666-0.667V9.666C20.667,9.298,20.965,9,21.333,9C21.702,9,22,9.298,22,9.666v16.667C22,26.702,21.702,27,21.333,27z"></path></g><g><rect y="4.333"  width="32" height="1.333"></rect></g></g></g></g></svg>');
+      	$svg.appendTo('body');
       },
       rendertimerange = function () {
       	var $timeRangeContainer = $j('<div class="timegrip-timerange-container"></div>'),
@@ -259,7 +264,7 @@ function timeGripHelper() {
       	$favoriteHolder.empty();
       	if (favoritesArray.length) {
 	  		$j.each(favoritesArray, function (ind, item) {
-		          html += '<li><a class="timegrip-fav-item" data-activity="' + item.activityID +'" data-project="' + item.projectID +'" data-project-text="' + item.project +'" data-activity-text="' + item.activity + '" href="#">' + item.project + ' - ' + item.activity + '</a><span class="timegrip-fav-remove">Remove</span></li>';
+		          html += '<li><a class="timegrip-fav-item" data-activity="' + item.activityID +'" data-project="' + item.projectID +'" data-project-text="' + item.project +'" data-activity-text="' + item.activity + '" href="#">' + item.project + ' - ' + item.activity + '</a><span class="timegrip-fav-remove"><span class="iconmelon"><svg viewBox="0 0 32 32"><use xlink:href="#delete-garbage"></use></svg></span></span></li>';
 		    });
 		    $favoriteHolder.append(html + '</ul>');
 	  		$favoritesContainer.show();

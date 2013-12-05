@@ -187,6 +187,10 @@
 		table-layout: fixed;
 	}
 
+	.timegrip-table tr {
+		display: block;
+	}
+
 	.timegrip-table select {
 		width: 150px;
 	}
@@ -328,7 +332,8 @@
 		bottom: 0;
 		background: transparent;
 		width: 350px;
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: visible;
 		padding: 0 10px 25px !important;
 		border: 0 solid #000;
 		border-width: 0 !important;
@@ -337,6 +342,7 @@
 	.timegrip-favorite-container,
 	.timegrip-your-project-container {
 		margin: 0;
+		position: relative;
 		padding: 10px 0;
 		list-style: none;
 		background: #fff;
@@ -371,6 +377,7 @@
 
 	.timegrip-fav-list li {
 		display: table;
+		width: 100%;
 		margin: 8px 0;
 	}
 
@@ -479,6 +486,66 @@
 	.timegrip-show-timerange .timegrip-timerange-wrapper{
 		display: block;
 	}
+	.iconmelon,
+	.im {
+	  position: relative;
+	  width: 22px;
+	  height: 22px;
+	  display: block;
+	  fill: rgb(21, 158, 221);
+	  -webkit-transform: all;
+	}
+	.iconmelon:hover,
+	.im:hover {
+		fill: #159edd;
+	}
+	.iconmelon:after,
+	.im:after {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+}
+
+@media only screen and (max-width: 1070) {
+	.timegrip-personal-container {
+		margin-right: -300px;
+		overflow: visible;
+	}
+	body {
+		overflow-x: hidden;
+		width: 100%;
+	}
+	body > div:first-of-type {
+		width: 100%;
+		box-sizing: border-box;
+		padding-right: 100px !important;
+	}
+	.timegrip-favorite-container,
+	.timegrip-your-project-container {
+		-webkit-transform: translatex(0);
+		-moz-transform: translatex(0);
+		-o-transform: translatex(0);
+		-ms-transform: translatex(0);
+		transform: translatex(0);
+		-moz-transition: -moz-transform 300ms;
+	    -webkit-transition: -webkit-transform 300ms;
+	    -o-transition:width -o-transform 300ms;
+	    transition:width transform 300ms;
+	    
+	}
+	.timegrip-favorite-container:hover,
+	.timegrip-your-project-container:hover {
+		-webkit-transform: translatex(-275px);
+		-moz-transform: translatex(-275px);
+		-o-transform: translatex(-275px);
+		-ms-transform: translatex(-275px);
+		transform: translatex(-275px);
+	}
+
 }
 
 @media print {
