@@ -236,6 +236,10 @@
 		-webkit-appearance:menulist;
 	}
 
+	.timegrip-table .itl {
+		font-weight: bold;
+	}
+
 	.timegrip-activity-res,
 	.timegrip-project-search-res,
 	.timegrip-input-holder {
@@ -409,21 +413,40 @@
 		padding: 5px 10px;
 	}
 
+	#allocationTable,
 	#hourList,
 	#itemList {
+		min-width: 552px;
 		background: white;
 		padding: 10px;
 	}
-
+	#allocationTable,
 	#hourList > table,
 	#itemList > table {
 		width: 100%;
+		background: white;
 	}
 
+	#itemList .nwp {
+		white-space: normal;
+	}
+	#allocationTable td,
 	#hourList td,
 	#itemList td {
 		padding-top: 3px;
 		padding-bottom: 3px;
+	}
+
+	#allocationTable tbody > .row2:first-child {
+		border-top: 1px solid black;
+	}
+	#allocationTable .month_element {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		border-top: 40px solid #fff;
+	}
+	#allocationTable tbody:first-child .month_element {
+		border-top: none;
 	}
 
 	#hourList td:last-of-type,
@@ -442,6 +465,7 @@
 		text-align: right;
 	}
 
+
 	td.row1,
 	td.row2 {
 		padding: 8px;
@@ -453,6 +477,10 @@
 		padding-right: 390px !important;
 		padding-bottom: 20px;
 		padding-left: 20px !important;
+	}
+
+	.without-timegrip-helper > div:first-of-type {
+		padding-right: 20px !important;
 	}
 
 	.timegrip-input-clear-button {
@@ -524,6 +552,11 @@
 		box-sizing: border-box;
 		padding-right: 100px !important;
 	}
+
+	.without-timegrip-helper > div:first-of-type {
+		padding-right: 20px !important;
+	}
+
 	.timegrip-favorite-container,
 	.timegrip-your-project-container {
 		-webkit-transform: translatex(0);
