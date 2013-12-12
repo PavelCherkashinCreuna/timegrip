@@ -93,17 +93,18 @@ function timeGripHelper() {
         renderSvgIcon();
         renderDescriptionSuggestion();
         $input.focus();
+        setProjectFromQS();
 
         $santa = $j('.santa-time');
-        // $j('#dspact_SubmitAll').on('click', function () {
-        // 	$santa.addClass('visible');
-        // });
-        // $santa.on('click', function () {
-        // 	$santa.removeClass('visible');
-        // })
+        $j('#dspact_SubmitAll').on('click', function () {
+        	$santa.addClass('visible');
+        });
+        $santa.on('click', function () {
+        	$santa.removeClass('visible');
+        })
       },
       renderSvgIcon = function () {
-      	var $svg = $j('<svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="delete-garbage" data-iconmelon="Streamline Icon Set:71d4e0470bef1338fd8881be720f5fa1"><g id="Expanded"><g><g><path d="M27.333,31.667H4.667V4.333h22.667V31.667z M6,30.333h20V5.666H6V30.333z"></path></g><g><path  d="M23.333,5.666H8.667V0.333h14.667V5.666z M10,4.333h12V1.666H10V4.333z"></path></g><g><path  d="M10.667,27C10.298,27,10,26.702,10,26.333V9.666C10,9.298,10.298,9,10.667,9c0.369,0,0.667,0.298,0.667,0.666v16.667C11.333,26.702,11.036,27,10.667,27z"></path></g><g><path  d="M16,27c-0.369,0-0.667-0.298-0.667-0.667V9.666C15.333,9.298,15.631,9,16,9s0.667,0.298,0.667,0.666v16.667C16.667,26.702,16.369,27,16,27z"></path></g><g><path  d="M21.333,27c-0.368,0-0.666-0.298-0.666-0.667V9.666C20.667,9.298,20.965,9,21.333,9C21.702,9,22,9.298,22,9.666v16.667C22,26.702,21.702,27,21.333,27z"></path></g><g><rect y="4.333"  width="32" height="1.333"></rect></g></g></g></g></svg>');
+      	var $svg = $j('<svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="delete-garbage" data-iconmelon="Streamline Icon Set:71d4e0470bef1338fd8881be720f5fa1"><g id="Expanded"><g><g><path d="M27.333,31.667H4.667V4.333h22.667V31.667z M6,30.333h20V5.666H6V30.333z"></path></g><g><path  d="M23.333,5.666H8.667V0.333h14.667V5.666z M10,4.333h12V1.666H10V4.333z"></path></g><g><path  d="M10.667,27C10.298,27,10,26.702,10,26.333V9.666C10,9.298,10.298,9,10.667,9c0.369,0,0.667,0.298,0.667,0.666v16.667C11.333,26.702,11.036,27,10.667,27z"></path></g><g><path  d="M16,27c-0.369,0-0.667-0.298-0.667-0.667V9.666C15.333,9.298,15.631,9,16,9s0.667,0.298,0.667,0.666v16.667C16.667,26.702,16.369,27,16,27z"></path></g><g><path  d="M21.333,27c-0.368,0-0.666-0.298-0.666-0.667V9.666C20.667,9.298,20.965,9,21.333,9C21.702,9,22,9.298,22,9.666v16.667C22,26.702,21.702,27,21.333,27z"></path></g><g><rect y="4.333"  width="32" height="1.333"></rect></g></g></g></g><g id="edit-modify" data-iconmelon="Streamline Icon Set:5541559726ac4fe755565839637c8bcd"><g id="Expanded"><g><g><path d="M24.666,32H0V2.667h19.332c0.368,0,0.667,0.299,0.667,0.666C19.999,3.701,19.7,4,19.332,4H1.333v26.666h21.999V16c0-0.368,0.299-0.667,0.667-0.667s0.667,0.299,0.667,0.667V32z"></path></g><g><path  d="M14.667,11.333"></path></g><g><path  d="M14.424,18.242c-0.173,0-0.344-0.067-0.472-0.195c-0.203-0.203-0.254-0.513-0.125-0.77l1.885-3.771c0.032-0.064,0.074-0.123,0.125-0.174L28.565,0.604C28.961,0.209,29.443,0,29.959,0c0.809,0,1.568,0.522,1.89,1.3c0.308,0.743,0.139,1.54-0.454,2.133L18.666,16.16c-0.051,0.051-0.109,0.094-0.173,0.126l-3.771,1.886C14.627,18.22,14.526,18.242,14.424,18.242z M16.858,14.198l-0.943,1.886l1.886-0.943L30.452,2.49c0.21-0.21,0.266-0.438,0.167-0.681c-0.114-0.271-0.397-0.477-0.66-0.477c-0.157,0-0.309,0.072-0.451,0.214L16.858,14.198z"></path></g><g><path  d="M29.037,5.514c-0.171,0-0.342-0.065-0.472-0.195L26.68,3.433c-0.26-0.261-0.26-0.683,0-0.943c0.261-0.26,0.683-0.26,0.943,0l1.885,1.886c0.261,0.261,0.261,0.683,0,0.943C29.378,5.449,29.207,5.514,29.037,5.514z"></path></g></g></g></g><g id="pen" data-iconmelon="Streamline Icon Set:7420584f0cd54f3b43ebc215ec2ef022"><g id="Expanded"><g><g><path d="M8.211,28.229L8.211,28.229c-0.177,0-0.347-0.07-0.471-0.196l-3.772-3.771c-0.261-0.261-0.261-0.683,0-0.943L27.09,0.195C27.215,0.07,27.385,0,27.562,0l0,0c0.176,0,0.346,0.07,0.471,0.195l3.771,3.772c0.26,0.261,0.26,0.683,0,0.943L8.684,28.032C8.558,28.158,8.389,28.229,8.211,28.229z M5.383,23.789l2.829,2.829L30.391,4.439L27.562,1.61L5.383,23.789z"></path></g><g><path  d="M15.301,9.822c-0.171,0-0.341-0.065-0.472-0.195c-0.26-0.261-0.26-0.683,0-0.943l7.544-7.544c1.301-1.301,3.416-1.301,4.715,0c0.262,0.26,0.262,0.682,0,0.942c-0.26,0.261-0.682,0.261-0.941,0c-0.781-0.78-2.051-0.78-2.83,0l-7.544,7.545C15.642,9.757,15.472,9.822,15.301,9.822z"></path></g><g><path  d="M0.667,32c-0.171,0-0.342-0.065-0.472-0.195c-0.261-0.261-0.261-0.683,0-0.943l2.829-2.829c0.26-0.26,0.682-0.26,0.943,0c0.261,0.261,0.261,0.683,0,0.943l-2.829,2.829C1.009,31.935,0.838,32,0.667,32z"></path></g><g><path  d="M23.787,12.651c-0.17,0-0.34-0.064-0.471-0.195l-3.771-3.772c-0.262-0.261-0.262-0.683,0-0.942c0.26-0.261,0.682-0.261,0.943,0l3.771,3.772c0.26,0.261,0.26,0.683,0,0.942C24.129,12.587,23.959,12.651,23.787,12.651z"></path></g><g><path  d="M4.44,30.114c-0.171,0-0.342-0.065-0.472-0.195l-1.886-1.887c-0.125-0.125-0.195-0.294-0.195-0.471s0.07-0.347,0.195-0.472l2.83-2.829c0.26-0.261,0.682-0.261,0.942,0c0.261,0.261,0.261,0.682,0,0.943l-2.358,2.357l0.944,0.942l2.357-2.357c0.261-0.26,0.682-0.26,0.943,0c0.261,0.262,0.261,0.683,0,0.943l-2.829,2.829C4.781,30.049,4.61,30.114,4.44,30.114z"></path></g></g></g></g><g id="like" data-iconmelon="Dripicons:c2f91e9200879ade2db90e9a3e07f0e6"><g><path d="M31.555,16.246c-0.248-1.705-1.514-3.078-3.388-3.673c-0.992-0.315-2.674-0.735-4.042-1.062c2.509-3.592,3.003-7.304,2.069-9.428C25.613,0.76,24.512,0,23.175,0c-2.584,0-3.259,2.164-3.751,3.743c-0.073,0.234-0.148,0.477-0.231,0.723c-0.458,1.36-2.752,3.816-6.103,5.685c-2.508,1.398-4.91,3.311-5.011,3.391c-0.334,0.268-0.53,0.674-0.53,1.102v13.58c0,0.453,0.218,0.879,0.586,1.144C10.153,30.82,17.271,32,20.847,32c1.86,0,2.592-0.293,2.981-0.512c1.605-0.908,3.741-6.047,5.302-10.37C30.93,19.755,31.81,18,31.555,16.246z M27.16,19.062c-0.248,0.168-0.435,0.411-0.536,0.693c-1.397,3.91-3.399,8.518-4.205,9.282c-0.119,0.038-0.536,0.143-1.572,0.143c-3.341,0-8.529-0.996-10.479-1.8V15.335c0.814-0.615,2.452-1.806,4.094-2.722c3.655-2.039,6.63-4.952,7.402-7.25c0.089-0.266,0.171-0.527,0.25-0.78c0.55-1.764,0.689-1.764,1.06-1.764c0.099,0,0.264,0,0.438,0.398c0.605,1.379,0.066,4.837-3.03,8.207c-0.34,0.371-0.458,0.896-0.307,1.376c0.151,0.479,0.546,0.843,1.038,0.953c0.042,0.01,4.275,0.957,5.998,1.506c0.821,0.261,1.364,0.781,1.452,1.392C28.876,17.416,28.291,18.296,27.16,19.062z"></path><path d="M2.692,12.189c-1.265,0-2.291,1.025-2.291,2.291v13.861c0,1.265,1.026,2.291,2.291,2.291s2.291-1.026,2.291-2.291V14.48C4.983,13.215,3.958,12.189,2.692,12.189z"></path></g></g></svg>');
       	$svg.appendTo('body');
       },
       rendertimerange = function () {
@@ -271,11 +272,13 @@ function timeGripHelper() {
 	    window.localStorage.setItem('favorites', JSON.stringify(favoritesArray));
       },
       renderFavorites = function () {
-      	var html = '<ul class="timegrip-fav-list">';
+      	var html = '<ul class="timegrip-fav-list">',
+      		title = '';
       	$favoriteHolder.empty();
       	if (favoritesArray.length) {
 	  		$j.each(favoritesArray, function (ind, item) {
-		          html += '<li><a class="timegrip-fav-item" data-activity="' + item.activityID +'" data-project="' + item.projectID +'" data-project-text="' + item.project +'" data-activity-text="' + item.activity + '" href="#">' + item.project + ' - ' + item.activity + '</a><span class="timegrip-fav-remove"><span class="iconmelon"><svg viewBox="0 0 32 32"><use xlink:href="#delete-garbage"></use></svg></span></span></li>';
+	  			title = item.customTitle || (item.project + ' - ' + item.activity);
+		        html += '<li><span title="Edit title" class="timegrip-edit-title"><span class="iconmelon"><svg viewBox="0 0 32 32"><use xlink:href="#pen"></use></svg></span></span><span title="Edit title" class="timegrip-save-title"><span class="iconmelon"><svg viewBox="0 0 32 32"><use xlink:href="#like"></use></svg></span></span><span title="' + item.project + ' - ' + item.activity + '" class="timegrip-fav-item" data-activity="' + item.activityID +'" data-project="' + item.projectID +'" data-project-text="' + item.project +'" data-activity-text="' + item.activity + '" href="#">' + title + '</span><span class="timegrip-fav-remove"><span class="iconmelon"><svg viewBox="0 0 32 32"><use xlink:href="#delete-garbage"></use></svg></span></span></li>';
 		    });
 		    $favoriteHolder.append(html + '</ul>');
 	  		$favoritesContainer.show();
@@ -286,18 +289,18 @@ function timeGripHelper() {
 			var inputs = input.split("-");
 			var fromMinutes = calcMinutes(inputs[0]);
 			var toMinutes = calcMinutes(inputs[1]);
-			
+
     		var totalMinutes = toMinutes - fromMinutes;
-    		
+
     		return totalMinutes/60;
-    	}		
+    	}
     	return input;
-		
+
 		function calcMinutes(time){
 			var hours = 0;
 			var minutes	= 0;
 			var length = time.length;
-			
+
 			if (length > 2){
 				hours = Number(time.substring(0,length-2));
 				minutes = Number(time.substring(time.length-2));
@@ -380,6 +383,51 @@ function timeGripHelper() {
 	  	$projectSearchRes.empty();
       	$activityRes.empty();
 	  },
+	  getQSParameterByName = function (name) {
+			name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+			return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	  },
+	  setProjectFromQS = function () {
+	  	var projectId = getQSParameterByName('projectId'),
+	  		activityId = getQSParameterByName('activityId'),
+	  		description = getQSParameterByName('desc');
+
+	  	if (activityId) {
+	  		setProject(projectId, function () {
+	  			setActivity(activityId);
+	  		});
+	  	} else {
+	  		setProject(projectId);
+	  	}
+
+	  	if (description) {
+	  		$descrip.val(description);
+	  	}
+	  },
+	  editTitle = function ($elem) {
+	  	var $elements = $elem.parents('.timegrip-fav-list').children(),
+	  		$editElement = $elem.find('.timegrip-fav-item');
+
+	  	$elements.removeClass('editing');
+	  	$elem.addClass('editing');
+	  	$editElement.attr('contenteditable', true)[0].focus();
+	  },
+	  saveTitle = function ($elem) {
+	  	var $editElement = $elem.find('.timegrip-fav-item'),
+	  		project = $editElement.data('project');
+
+	  	$editElement.attr('contenteditable', false);
+	  	$elem.removeClass('editing');
+	  	
+	  	$.each(favoritesArray, function (index, item) {
+	  		if (item.projectID == project) {
+	  			item.customTitle = $editElement.text();
+	  		}
+	  	});
+	    window.localStorage.setItem('favorites', JSON.stringify(favoritesArray));
+	  },
       attachEvents = function () {
         $input.on('keyup', function (e) {
           searchProject($j(this).val());
@@ -405,16 +453,35 @@ function timeGripHelper() {
         });
         $favoriteHolder.on('click', '.timegrip-fav-item' , function (e) {
         	e.preventDefault();
-        	var $this = $j(this);
-        	setProject($this.data('project'), function () {
-        		setActivity($this.data('activity'));
-        	});
-        })
+        	var $this = $j(this),
+        		$parent = $this.parent();
+
+        	if (!$parent.hasClass('editing')) {
+	        	setProject($this.data('project'), function () {
+	        		setTimeout(function () {
+	        			setActivity($this.data('activity'));
+	        		}, 300);
+	        	});
+        	}
+        });
+        $favoriteHolder.on('click', '.timegrip-edit-title' , function () {
+        	var $elem = $(this).parent();
+        	editTitle($elem);
+        });
+         $favoriteHolder.on('click', '.timegrip-save-title' , function () {
+        	var $elem = $(this).parent();
+        	saveTitle($elem);
+        });
+        $favoriteHolder.on('blur', '.timegrip-fav-item' , function () {
+        	var $elem = $(this).parent();
+        	saveTitle($elem);
+        });
+
         $favoriteHolder.on('click', '.timegrip-fav-remove' , function (e) {
         	e.preventDefault();
         	var $this = $j(this);
         	removeFavActivity($this);
-        })
+        });
         $yourProjectContainer.on('click', '.timegrip-your-proj-item' , function (e) {
         	e.preventDefault();
         	var $this = $j(this);
@@ -447,7 +514,7 @@ function timeGripHelper() {
         $timeRangeToggler.on('click', function (e) {
         	e.preventDefault();
         	$j('body').toggleClass('timegrip-show-timerange');
-        })
+        });
 
 
         $( ".timegrip-range-input" ).dateControl({
