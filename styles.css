@@ -635,6 +635,10 @@
 		transform: translatex(-275px);
 	}
 
+	.timegrip-current-week {
+		margin-left: 30px;
+	}
+
 }
 
 @media print {
