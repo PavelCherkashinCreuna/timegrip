@@ -72,7 +72,7 @@ function timeGripHelper() {
         $timeInput[0].size = 9;
 
         $holder.after($timeRangeToggler);
-        
+
         var tmpEl = $('<div class="elem"></div>');
         tmpEl.html('&aring;');
         aEq = tmpEl.text();
@@ -200,6 +200,14 @@ function timeGripHelper() {
       	$dataList.html(html);
       	$descrip.parent().append($dataList);
 
+      },
+      setInitialProjectActivity = function () {
+      	var val = $yourProjectsSelect.val(),
+      		activity = $activitySelect.val();
+      	
+      	setProject(val, function () {
+      		setActivity(activity);
+      	})
       },
       setProject = function (text, callback) {
         var textOrigin = $.isNumeric(text) ? text : text.toLowerCase();
@@ -408,8 +416,12 @@ function timeGripHelper() {
 	  		setProject(projectId, function () {
 	  			setActivity(activityId);
 	  		});
-	  	} else {
+	  	} else if (projectId){
 	  		setProject(projectId);
+	  	} else {
+	  		setTimeout(function () {
+	  			setInitialProjectActivity();
+	  		}, 400);
 	  	}
 
 	  	if (description) {
@@ -430,7 +442,7 @@ function timeGripHelper() {
 
 	  	$editElement.attr('contenteditable', false);
 	  	$elem.removeClass('editing');
-	  	
+
 	  	$.each(favoritesArray, function (index, item) {
 	  		if (item.projectID == project) {
 	  			item.customTitle = $editElement.text();
