@@ -127,7 +127,11 @@ function timeGripHelper() {
       	$timerangeSubmitButton.after($timerangeLoader);
       },
       searchProject = function (value) {
-        var res = [];
+        var res = searchProjectByName(value);
+        renderProjectRes(res);
+      },
+      searchProjectByName = function (value) {
+      	var res = [];
         value = value.toLowerCase().split(' ');
         if (!$projectSelect.length) {
         	$j('#regITM_set1').hide();
@@ -152,7 +156,7 @@ function timeGripHelper() {
 		         });
 	         }
         });
-        renderProjectRes(res);
+      	return res;
       },
       renderYourProjects = function () {
       	var html = '<ul class="timegrip-your-proj-list">';
@@ -251,6 +255,19 @@ function timeGripHelper() {
       },
       setActivity = function (value) {
         $activitySelect.val(value);
+        $timeInput.focus();
+      },
+      setActivityByName = function (value) {
+      	var textOrigin = value.toLowerCase();
+      	$activitySelect.find('option').each(function () {
+          var $this = $j(this),
+              text = $this.text().toLowerCase(),
+              id = parseInt($this.attr('value'), 10);
+
+          if (text == textOrigin) {
+            $activitySelect.val(id);
+          }
+        });
         $timeInput.focus();
       },
       getActivity = function () {
@@ -410,14 +427,20 @@ function timeGripHelper() {
 	  setProjectFromQS = function () {
 	  	var projectId = getQSParameterByName('projectId'),
 	  		activityId = getQSParameterByName('activityId'),
-	  		description = getQSParameterByName('desc');
-
+	  		description = getQSParameterByName('desc'),
+	  		projectName = getQSParameterByName('projectName'),
+	  		activityName = getQSParameterByName('activityName');
+	  	
 	  	if (activityId) {
 	  		setProject(projectId, function () {
 	  			setActivity(activityId);
 	  		});
-	  	} else if (projectId){
+	  	} else if (projectId) {
 	  		setProject(projectId);
+	  	} else if (projectName) {
+	  		setProject(searchProjectByName(projectName)[0].text, function () {
+	  			setActivityByName(activityName);
+	  		});
 	  	} else {
 	  		setTimeout(function () {
 	  			setInitialProjectActivity();
