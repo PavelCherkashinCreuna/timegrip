@@ -54,7 +54,6 @@ function timeGripHelper() {
       aeEqRegExp,
       $santa,
       init = function () {
-		debugger;
         $inputWrapper.append($input);
         $inputWrapper.append($inputClearButton);
         $holder.append($inputWrapper);
