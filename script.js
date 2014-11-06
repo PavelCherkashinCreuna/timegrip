@@ -270,10 +270,15 @@ function timeGripHelper() {
         });
         $timeInput.focus();
       },
+	  sortActivities = function(a,b){
+		var aName = $j(a).text();
+		var bName = $j(b).text();
+		return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+	  },	  
       getActivity = function () {
       	var html = '<ul class="side-nav">';
       	$activityRes.empty();
-        $activitySelect.find('option').each(function (ind, value) {
+        $activitySelect.find('option').sort(sortActivities).each(function (ind, value) {
           html += '<li><a class="timegrip-activity-res-item" data-id="' + $j(this).attr('value') + '" href="#">' + $j(this).text() + '<span class="arrow"></span></a></li>';
         });
         $activityRes.append(html + '</ul>');
