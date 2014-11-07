@@ -16,7 +16,8 @@ $j(function() {
 });
 
 function timeGripHelper() {
-  var $holder = $j('<div class="timegrip-holder"></div>'),
+  var $mainWrapper = $j('<div class="main-wrapper"></div>'),
+  	  $holder = $j('<div class="timegrip-holder"></div>'),
       $inputWrapper = $j('<div class="timegrip-input-holder"></div>'),
       $projectSearchRes = $j('<div class="timegrip-project-search-res"></div>'),
       $activityRes = $j('<div class="timegrip-activity-res"></div>'),
@@ -39,8 +40,10 @@ function timeGripHelper() {
       $timerangeLoader = $j('<div class="timerange-loader"></div>'),
       $favoritesContainer = $j('<div class="timegrip-personal-container"><div class="timegrip-favorite-container"><h2>Favorite activities</h2><div class="timegrip-favorite-holder"></div></div></div>'),
       $timeRangeToggler = $j('<a class="timegrip-timerange-toggler"><span class="timegrip-show-timerange-text">Show time ranges</span><span class="timegrip-hide-timerange-text">Hide time ranges</span></a>'),
+      $panelToggler = $j('<button class="timegrip-panel-toggler" />'),
       $favoriteHolder,
       $yourProjects,
+      $font = $j("<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>"),
       $userIDInput = $j('[name="res_ID"]'),
       $nameTitle = $j('#selectmode_resCtrl'),
       userID = $userIDInput.length ? $userIDInput.val() : $j('#reslinlRes').val(),
@@ -54,6 +57,8 @@ function timeGripHelper() {
       aeEqRegExp,
       $santa,
       init = function () {
+      	$j('body > *').wrapAll($mainWrapper);
+      	$j('body').append($font);
         $inputWrapper.append($input);
         $inputWrapper.append($inputClearButton);
         $holder.append($inputWrapper);
@@ -67,6 +72,7 @@ function timeGripHelper() {
 
         $favoritesContainer.appendTo('body');
         $yourProjectContainer.appendTo($favoritesContainer);
+        $panelToggler.appendTo($favoritesContainer);
 
         $timeInput[0].maxLength = 9;
         $timeInput[0].size = 9;
@@ -564,6 +570,11 @@ function timeGripHelper() {
         $timeRangeToggler.on('click', function (e) {
         	e.preventDefault();
         	$j('body').toggleClass('timegrip-show-timerange');
+        });
+
+        $panelToggler.on('click', function (e) {
+        	e.preventDefault();
+        	$j('body').toggleClass('timegrip-panel-shown');
         });
 
 
