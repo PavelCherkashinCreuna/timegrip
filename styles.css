@@ -558,7 +558,7 @@
 	.main-wrapper {
 		width: 100%;
 		position: relative;
-		overflow: hidden;
+		overflow-x: hidden;
 	}
 	.main-wrapper > div:first-of-type {
 		max-width: 1000px;
@@ -626,6 +626,7 @@
 	  height: 100%;
 	}
 	.santa-time {
+		display: none;
 		visibility: hidden;
 		opacity: 0;
 		position: fixed;
@@ -651,11 +652,11 @@
 		margin-right: -300px;
 		overflow: visible;
 	}
-	body {
+	.main-wrapper {
 		overflow-x: hidden;
 		width: 100%;
 	}
-	body > div:first-of-type {
+	.main-wrapper > div:first-of-type {
 		width: 100%;
 		box-sizing: border-box;
 		padding-right: 100px !important;
