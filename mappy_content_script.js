@@ -1,3 +1,4 @@
+/* global chrome */
 function injectJs(link) {
         var scr = document.createElement("script");
         scr.type="text/javascript";

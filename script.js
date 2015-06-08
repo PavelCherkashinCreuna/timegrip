@@ -33,6 +33,7 @@ function timeGripHelper() {
       $projectSelect = $j('#regHR_prj2'),
       $activitySelect = $j('#regHR_prd'),
       $favoriteButton = $j('<a class="timegrip-like-button">Add to favorites</a>'),
+      $shareButton = $j('<a class="timegrip-share-button" id="timegrip-share-button" title="Copy to clipboard a link to project/activity">&nbsp;</a>'),
 	  $timerangeHeader = $j('<h2 class="timegrip-timerange-header">You can log time ranges here <span>(i.e. vacation)</span></h2>'),
       $timerangeFromInput = $j('<input type="text" id="timerange-from" class="timegrip-range-input" maxlength="10" placeholder="From" />'),
       $timerangeToInput = $j('<input type="text" id="timerange-to" class="timegrip-range-input" placeholder="To" maxlength="10" />'),
@@ -68,6 +69,7 @@ function timeGripHelper() {
         $descrip.parent().wrapInner('<div class="timegrip-help-td"></div>');
         $j('.timegrip-help-td').css('position', 'relative')
         $activitySelect.after($favoriteButton);
+        $activitySelect.after($shareButton);
 
         $favoritesContainer.appendTo('body');
         $yourProjectContainer.appendTo($favoritesContainer);
@@ -200,7 +202,7 @@ function timeGripHelper() {
       	var $dataList = $j('<datalist id="suggestions" />');
       	var html = '';
       	var arr = [];
-      	$('#hourList').find('> table > tbody > tr > td:nth-child(4n)').each(function () {
+      	$j('#hourList').find('> table > tbody > tr > td:nth-child(4n)').each(function () {
       		var text= $j.trim($j(this).text());
       		if (text && $j.inArray(text, arr) === -1) {
       			arr.push(text);
@@ -575,6 +577,26 @@ function timeGripHelper() {
         $panelToggler.on('click', function (e) {
         	e.preventDefault();
         	$j('body').toggleClass('timegrip-panel-shown');
+        });
+
+
+        $shareButton.on('click', function(){
+          var
+            shareUrl = window.location.protocol + '//' + window.location.host + '/index.php?mdl=1&projectId={{projectId}}&activityId={{activityId}}';
+
+          shareUrl = shareUrl.replace('{{projectId}}', $projectSelect.val());
+          shareUrl = shareUrl.replace('{{activityId}}', $activitySelect.val());
+
+          var $copyDiv = $('<textarea />', {
+            id: 'tmpClipboardText',
+            style: 'position: absolute; left: -9999em; top: -9999em'
+          });
+          $('body').append($copyDiv);
+          $copyDiv.val(shareUrl);
+          $copyDiv.focus();
+          document.execCommand('SelectAll');
+          document.execCommand("Copy", false, null);
+          $copyDiv.remove();
         });
 
 
