@@ -242,12 +242,16 @@
 
 	.timegrip-table select:focus,
 	.timegrip-input:focus,
-	.timegrip-table input[type="text"]:focus {
+	.timegrip-table input[type="text"]:focus,
+	select#reslinlRes:focus,
+	select#itmlst_sortorder:focus {
 		box-shadow: inset 0 0 5px #159edd;
 		outline: none;
 	}
 
-	.timegrip-table select {
+	.timegrip-table select,
+	select#reslinlRes,
+	select#itmlst_sortorder {
 		height: 30px;
 		border: 1px solid rgb(198, 198, 198);
 		border-radius: 5px;
@@ -574,7 +578,7 @@
 		position: relative;
 		overflow-x: hidden;
 	}
-	.main-wrapper > div:first-of-type {
+	.time-registration-page .main-wrapper > div:first-of-type {
 		max-width: 1000px;
 		margin: auto;
 		padding-right: 390px !important;
@@ -659,7 +663,18 @@
 		visibility: visible;
 	}
 
+	.timegrip-current-week {
+		padding: 10px 0;
+		display: inline-block;
+	}
+
+	#timerange-from {
+		margin-bottom: 5px;
+	}
+
 }
+
+
 
 @media only screen and (max-width: 1020px) {
 	.timegrip-personal-container {
