@@ -129,7 +129,7 @@
           // $santa.on('click', function () {
           //  $santa.removeClass('visible');
           // })
-          // 
+          //
           if ($nameTitle.length) {
             $nameTitle.append('<span class="timegrip-current-week"> Current Week: ' + (new Date()).getWeek() + '</span>')
           }
@@ -236,7 +236,7 @@
         setInitialProjectActivity = function () {
           var val = $yourProjectsSelect.val(),
             activity = $activitySelect.val();
-          
+
           setProject(val, function () {
             setActivity(activity);
           })
@@ -461,8 +461,17 @@
           activityId = getQSParameterByName('activityId'),
           description = getQSParameterByName('desc'),
           projectName = getQSParameterByName('projectName'),
-          activityName = getQSParameterByName('activityName');
-        
+          activityName = getQSParameterByName('activityName'),
+          duration = getQSParameterByName('duration'),
+          date = getQSParameterByName('date');
+
+        if(duration) {
+          $timeInput.val(duration);
+        }
+        if(date){
+          $dateInput.val(date);
+        }
+
         if (activityId) {
           setProject(projectId, function () {
             setActivity(activityId);
