@@ -600,8 +600,8 @@
 
 
         $shareButton.on('click', function(){
-          var
-            shareUrl = window.location.protocol + '//' + window.location.host + '/index.php?mdl=1&projectId={{projectId}}&activityId={{activityId}}';
+          var loc = window.location;
+          var shareUrl = loc.protocol + '//' + loc.host + loc.pathname + '?mdl=1&projectId={{projectId}}&activityId={{activityId}}';
 
           shareUrl = shareUrl.replace('{{projectId}}', $projectSelect.val());
           shareUrl = shareUrl.replace('{{activityId}}', $activitySelect.val());
